@@ -27,7 +27,7 @@ pipeline {
         //}
         stage('build docker') {
             steps {
-                sh 'docker build -t myapp:v2 .'
+                sh 'docker build -t myapp:v1 .'
             }
         }
         stage('build image') {
@@ -37,7 +37,8 @@ pipeline {
         }
         stage('run container') {
             steps {
-                sh 'docker run -d --name myapp -p 5000:5000 myapp:v2'
+                sh 'docker rm -f myapp || true'
+                sh 'docker run -d --name myapp -p 5000:5000 myapp:v1'
             }
         }
     }

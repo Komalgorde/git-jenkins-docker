@@ -30,7 +30,7 @@ pipeline {
                 sh 'docker build -t myapp:v2 .'
             }
         }
-        stage('build images') {
+        stage('build image') {
             steps {
                 sh 'docker images'
             }
